@@ -54,9 +54,9 @@ static int D;
         for (int k = 0; k < E; k++) {
             result = result * c % N;
         }
-        printf("%02d ", result);
+        printf("%02x", result);
         // 4. 拼接加密字符串
-        [strM appendFormat:@"%c", result];
+        [strM appendFormat:@"%02x", result];
     }
     printf("\n");
     
@@ -72,10 +72,12 @@ static int D;
     NSMutableString *strM = [NSMutableString string];
     
     // 2. 取出字符串中的每一个字符
-    for (int i = 0; i < data.length; i++) {
-        char c = 0;
-        [data getBytes:&c range:NSMakeRange(i, 1)];
-        
+    for (int i = 0; i < data.length; i += 2) {
+        static char cc[2];
+        [data getBytes:&cc range:NSMakeRange(i, 2)];
+
+        int c = hexCC(cc);
+
         int result = 1;
         // 3. (c ^ D) % N，为了防止溢出，采用循环取模的方式计算
         for (int k = 0; k < D; k++) {
@@ -88,6 +90,17 @@ static int D;
     printf("\n");
     
     return [strM copy];
+}
+
+int hexCC(char * cc) {
+    int t;
+    int result = 0;
+    for(int i = 0; cc[i]; i++) {
+        if(cc[i] <= '9' ) t = cc[i] - '0';
+        else t = cc[i] - 'a' + 10;
+        result = result * 0x10 + t;
+    }
+    return result;
 }
 
 /** 判断一个数字是否为质数 */
