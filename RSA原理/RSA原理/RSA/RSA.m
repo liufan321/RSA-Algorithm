@@ -54,9 +54,9 @@ static int D;
         for (int k = 0; k < E; k++) {
             result = result * c % N;
         }
-        printf("%02x", result);
+        printf("%02d ", result);
         // 4. 拼接加密字符串
-        [strM appendFormat:@"%02x", result];
+        [strM appendFormat:@"%c", result];
     }
     printf("\n");
     
@@ -88,17 +88,6 @@ static int D;
     printf("\n");
     
     return [strM copy];
-}
-
-int hexCC(char * cc) {
-    int t;
-    int result = 0;
-    for(int i = 0; cc[i]; i++) {
-        if(cc[i] <= '9' ) t = cc[i] - '0';
-        else t = cc[i] - 'a' + 10;
-        result = result * 0x10 + t;
-    }
-    return result;
 }
 
 /** 判断一个数字是否为质数 */
