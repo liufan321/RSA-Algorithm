@@ -19,7 +19,7 @@
     [super viewDidLoad];
     
     RSA *rsa = [[RSA alloc] init];
-    NSString *encryStr = [rsa encryptString:@"Hello - Rsa"];
+    NSString *encryStr = [rsa encryptString:@"ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789"];
     NSLog(@"加密结果 : %@", encryStr);
     
     NSString *decryStr = [rsa decryptString:encryStr];

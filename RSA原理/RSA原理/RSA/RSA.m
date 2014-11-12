@@ -46,7 +46,7 @@ static int D;
     
     // 2. 取出字符串中的每一个字符
     for (int i = 0; i < data.length; i++) {
-        char c = 0;
+        unsigned char c = 0;
         [data getBytes:&c range:NSMakeRange(i, 1)];
         
         int result = 1;
@@ -73,7 +73,7 @@ static int D;
     
     // 2. 取出字符串中的每一个字符
     for (int i = 0; i < data.length; i++) {
-        char c = 0;
+        unsigned char c = 0;
         [data getBytes:&c range:NSMakeRange(i, 1)];
         
         int result = 1;
